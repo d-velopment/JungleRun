@@ -8,7 +8,8 @@
   var trees = new Array(100)
     .fill()
     .map((_, i) => {
-      const origX = Math.random() * 100
+      let origX = Math.random() * 100
+      origX = origX >= 49 && origX <= 51 ? 49 : origX
       const origZ = Math.random() * 5
       return {
         xOrigin: origX,
@@ -38,7 +39,7 @@
       trees = trees.map((tree) => {
         tree.z *= 1.01
         tree.x = 50 - ((50 - tree.xOrigin) * tree.z) / 6
-        tree.y = 10 - /* (Math.sin(step / 3) / 100) * tree.z - */ tree.z / (screenRatio * 3)
+        tree.y = 10 - tree.z / (screenRatio * 3)
 
         if (tree.z < 75) {
           tree.opacity += 0.01
@@ -50,6 +51,7 @@
         if (tree.z > 300 || tree.x < -25 || tree.x > 125) {
           tree.z = maxFar
           tree.origX = tree.x = Math.random() * 100
+          tree.origX = tree.origX >= 49 && tree.origX <= 51 ? 49 : tree.origX
           tree.opacity = 0
           isChanged = true
         }
@@ -101,6 +103,17 @@
     height: 10%;
     bottom: 0%;
   }
+  .runner {
+    position: absolute;
+    background-image: url("ipack/run.gif");
+    background-repeat: no-repeat;
+    background-position: center;
+    background-size: contain;
+    width: 100%;
+    height: 35%;
+    bottom: -2%;
+    mix-blend-mode: multiply;
+  }
 </style>
 
 <main>
@@ -112,5 +125,6 @@
         style="left: {tree.x - tree.z}%; bottom: {tree.y}%; opacity: {tree.opacity}; width: {tree.z * 2}%; height: {tree.z * 2}%; background-image: url('{tree.asset}')"
         class="img"></div>
     {/each}
+    <div class="runner"></div>
   </div>
 </main>
