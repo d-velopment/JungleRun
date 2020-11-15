@@ -38,16 +38,16 @@
       trees = trees.map((tree) => {
         tree.z *= 1.01
         tree.x = 50 - ((50 - tree.xOrigin) * tree.z) / 6
-        tree.y = 10 - (Math.sin(step / 5) / 50) * tree.z - tree.z / (screenRatio * 3)
+        tree.y = 10 - /* (Math.sin(step / 3) / 100) * tree.z - */ tree.z / (screenRatio * 3)
 
         if (tree.z < 75) {
           tree.opacity += 0.01
         }
 
-        if (tree.z > 50 || tree.x < 0 || tree.x > 100) {
-          tree.opacity -= 0.1
+        if (tree.z > 100 || tree.x < 0 || tree.x > 100) {
+          tree.opacity -= 0.05
         }
-        if (tree.z > 100 || tree.x < -25 || tree.x > 125) {
+        if (tree.z > 300 || tree.x < -25 || tree.x > 125) {
           tree.z = maxFar
           tree.origX = tree.x = Math.random() * 100
           tree.opacity = 0
@@ -95,7 +95,7 @@
   }
   .ground {
     background: rgb(58, 73, 73);
-    background: linear-gradient(0deg, rgba(28, 43, 33, 1) 0%, rgba(7, 14, 17, 1) 100%);
+    background: linear-gradient(0deg, rgba(18, 23, 33, 1) 0%, rgba(7, 14, 17, 1) 100%);
     position: absolute;
     width: 100%;
     height: 10%;
