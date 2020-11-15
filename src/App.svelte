@@ -5,12 +5,12 @@
   const treeAssets = ["true"]
 
   const maxFar = 1
-  var trees = new Array(100)
+  var trees = new Array(75)
     .fill()
     .map((_, i) => {
       let origX = Math.random() * 100
       origX = origX >= 49 && origX <= 51 ? 49 : origX
-      const origZ = Math.random() * 5
+      const origZ = Math.random() * 10
       return {
         xOrigin: origX,
         x: 50 - ((50 - origX) * origZ) / 6,
@@ -48,7 +48,7 @@
         if (tree.z > 100 || tree.x < 0 || tree.x > 100) {
           tree.opacity -= 0.05
         }
-        if (tree.z > 300 || tree.x < -25 || tree.x > 125) {
+        if (tree.z > 400 || tree.x < -50 || tree.x > 150) {
           tree.z = maxFar
           tree.origX = tree.x = Math.random() * 100
           tree.origX = tree.origX >= 49 && tree.origX <= 51 ? 49 : tree.origX
