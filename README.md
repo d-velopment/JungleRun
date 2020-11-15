@@ -1,2 +1,2 @@
-# jungle
+# Jungle Run
 Jungle Run Example
